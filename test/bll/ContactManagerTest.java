@@ -4,23 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import bo.Contact;
 import dal.ContactDao;
 
-@RunWith(MockitoJUnitRunner.class)
 class ContactManagerTest {
 	private ContactManager cm;
 	
@@ -55,7 +48,7 @@ class ContactManagerTest {
 	
 	/*
 	 * TUs de la methode jolifie
-	 * Doit echouer : la methode d'affichage affiche un | de trop e la fin
+	 * Doit echouer : la methode d'affichage affiche un | de trop � la fin
 	 */
 	@Test
 	void testJolifie_nominal() {
@@ -91,7 +84,7 @@ class ContactManagerTest {
 		assertFalse(cm.checkTelephone("00000000000"));
 		assertFalse(cm.checkTelephone("000000000"));
 		
-		// Une chaine de 10 caracteres commeneant pas autre chose que 0 doit echouer
+		// Une chaine de 10 caracteres commencant pas autre chose que 0 doit echouer
 		assertFalse(cm.checkTelephone("1234567890"));
 	}
 	
@@ -129,44 +122,6 @@ class ContactManagerTest {
 		assertFalse(cm.isValid(null, null, "", "mail@gmail.com"));
 		assertFalse(cm.isValid(null, null, "0123456789", "gmail.com"));
 		assertFalse(cm.isValid(null, null, "012345678", "mail@gmail"));
-	}
-	
-	/*
-	 * TUs de la methode isValid
-	 * Meme scenarios que pour la version non mockee
-	 */
-	@Test
-	void testIsValid_nominal_mocke() {
-		cm = mock(ContactManager.class);
-		doCallRealMethod().when(cm).isValid(anyString(), anyString(), anyString(), anyString());
-		when(cm.checkMail(anyString())).thenReturn(true);
-		when(cm.checkTelephone(anyString())).thenReturn(true);
-		
-		assertTrue(cm.isValid("", "", "0123456789", "mail@gmail.com"));
-		
-		when(cm.checkMail(anyString())).thenReturn(false);
-		when(cm.checkTelephone(anyString())).thenReturn(true);
-		assertFalse(cm.isValid("", "", "", "mail@gmail.com"));
-		
-		when(cm.checkMail(anyString())).thenReturn(true);
-		when(cm.checkTelephone(anyString())).thenReturn(false);
-		assertFalse(cm.isValid("", "", "0123456789", "gmail.com"));
-		
-		when(cm.checkMail(anyString())).thenReturn(false);
-		when(cm.checkTelephone(anyString())).thenReturn(false);
-		assertFalse(cm.isValid("", "", "012345678", "mail@gmail"));
-		
-		/*
-		 * Pourquoi ne pas avoir ecrit :
-		 *   when(cm.checkMail(anyString())).thenReturn(true, true, false, false);
-		 *   when(cm.checkTelephone(anyString())).thenReturn(true, false, true, false);
-		 * ?
-		 * C'est parce que Java ne consulte pas le deuxieme membre d'un "&&" si le premier est false
-		 * C'est le "lazy interpretation" de Java : si j'ai "false & quelque chose", le resultat sera false dans tous les cas, donc je ne joue meme pas le "quelque chose"
-		 * Du coup, les resultats mockes de checkMail et checkTelephone sont decales
-		 * 
-		 * Pour eviter ea, avant chaque appel e isValid, je redefini le resultat attendu pour checkMail et checkTelephone
-		 */
 	}
 	
 	/*

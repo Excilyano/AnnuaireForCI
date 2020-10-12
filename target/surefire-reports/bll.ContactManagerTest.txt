@@ -1,22 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: bll.ContactManagerTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 0.132 s <<< FAILURE! - in bll.ContactManagerTest
-testCheckTelephone_nominal_enxx  Time elapsed: 0.005 s  <<< FAILURE!
+Tests run: 10, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.032 s <<< FAILURE! - in bll.ContactManagerTest
+testCheckTelephone_nominal_enxx  Time elapsed: 0.007 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at bll.ContactManagerTest.testCheckTelephone_nominal_enxx(ContactManagerTest.java:105)
+	at bll.ContactManagerTest.testCheckTelephone_nominal_enxx(ContactManagerTest.java:98)
 
-testIsValid_nominal_mocke  Time elapsed: 0.104 s  <<< ERROR!
-java.lang.NoClassDefFoundError: org/mockito/ArgumentMatchers
-	at bll.ContactManagerTest.testIsValid_nominal_mocke(ContactManagerTest.java:141)
-Caused by: java.lang.ClassNotFoundException: org.mockito.ArgumentMatchers
-	at bll.ContactManagerTest.testIsValid_nominal_mocke(ContactManagerTest.java:141)
-
-testJolifie_nominal  Time elapsed: 0.001 s  <<< FAILURE!
+testJolifie_nominal  Time elapsed: 0.002 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <0 | Dupont | Jack | 0240367494 | jack.dupont@gmail.com> but was: <0 | Dupont | Jack | 0240367494 | jack.dupont@gmail.com | >
-	at bll.ContactManagerTest.testJolifie_nominal(ContactManagerTest.java:62)
+	at bll.ContactManagerTest.testJolifie_nominal(ContactManagerTest.java:55)
 
 testIsValid_nominal  Time elapsed: 0.001 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
-	at bll.ContactManagerTest.testIsValid_nominal(ContactManagerTest.java:128)
+	at bll.ContactManagerTest.testIsValid_nominal(ContactManagerTest.java:121)
 
