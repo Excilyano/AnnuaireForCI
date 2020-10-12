@@ -12,13 +12,13 @@ public class EcranMettreAJour {
 		String id;
 		
 		do {
-			System.out.println("Veuillez saisir l'identifiant du contact à modifier");
+			System.out.println("Veuillez saisir l'identifiant du contact a modifier");
 			id = ScannerUtil.getScanner().nextLine();
-			if (!cm.exist(id)) System.err.println("Identifiant incorrect. Veuillez réessayer");
+			if (!cm.exist(id)) System.err.println("Identifiant incorrect. Veuillez reessayer");
 		} while(!cm.exist(id));
 		Contact contact = cm.find(Integer.parseInt(id));
 		
-		System.out.println("Le contact suivant va être mis à jour :");
+		System.out.println("Le contact suivant va etre mis a jour :");
 		System.out.println(cm.jolifie(contact));
 		
 		String nom, prenom, telephone, mail;
@@ -28,10 +28,10 @@ public class EcranMettreAJour {
 			System.out.println("Veuillez saisir le nom du contact");
 			nom = ScannerUtil.getScanner().nextLine();
 			
-			System.out.println("Veuillez saisir le prénom du contact");
+			System.out.println("Veuillez saisir le prenom du contact");
 			prenom = ScannerUtil.getScanner().nextLine();
 			
-			System.out.println("Veuillez saisir le numéro de téléphone du contact");
+			System.out.println("Veuillez saisir le numero de telephone du contact");
 			telephone = ScannerUtil.getScanner().nextLine();
 			
 			System.out.println("Veuillez saisir l'adresse mail du contact");
@@ -39,7 +39,7 @@ public class EcranMettreAJour {
 			
 			valid = cm.isValid(nom, prenom, telephone, mail);
 			if(!valid)
-				System.err.println("Les informations renseignées ne sont pas valides. Veuillez réessayer.");
+				System.err.println("Les informations renseignees ne sont pas valides. Veuillez reessayer.");
 		} while (!valid);
 		
 		contact.setNom(nom);

@@ -38,7 +38,7 @@ public class ApplicationConsole {
 	private void displayMenu() {
 		System.out.println("****************************************");
 		System.out.println("* Bienvenue sur votre annuaire         *");
-		System.out.println("* Veuillez saisir l'action à réaliser  *");
+		System.out.println("* Veuillez saisir l'action a realiser  *");
 		System.out.println("*   1. Afficher mes contacts           *");
 		System.out.println("*   2. Ajouter un contact              *");
 		System.out.println("*   3. Modifier un contact             *");

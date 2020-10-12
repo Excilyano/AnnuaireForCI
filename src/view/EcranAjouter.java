@@ -17,10 +17,10 @@ public class EcranAjouter {
 			System.out.println("Veuillez saisir le nom du contact");
 			nom = ScannerUtil.getScanner().nextLine();
 			
-			System.out.println("Veuillez saisir le prénom du contact");
+			System.out.println("Veuillez saisir le prenom du contact");
 			prenom = ScannerUtil.getScanner().nextLine();
 			
-			System.out.println("Veuillez saisir le numéro de téléphone du contact");
+			System.out.println("Veuillez saisir le numero de tï¿½lï¿½phone du contact");
 			telephone = ScannerUtil.getScanner().nextLine();
 			
 			System.out.println("Veuillez saisir l'adresse mail du contact");
@@ -28,7 +28,7 @@ public class EcranAjouter {
 			
 			valid = cm.isValid(nom, prenom, telephone, mail);
 			if(!valid)
-				System.err.println("Les informations rensignées ne sont pas valides. Veuillez réessayer.");
+				System.err.println("Les informations rensignees ne sont pas valides. Veuillez reessayer.");
 		} while (!valid);
 		
 		cm.insert(new Contact(nom, prenom, telephone, mail));
