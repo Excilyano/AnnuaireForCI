@@ -38,8 +38,8 @@ class ContactManagerTest {
 	}
 	
 	private void initialiserCmPourTestDao() {
-		// Pour les tests de dao, je vais créer un manager en lui donnant un dao que j'ai renseigné moi-même
-		// De cette manière, le résultat de mes tests sera toujours le même, peu importe ce qu'il y a en base
+		// Pour les tests de dao, je vais creer un manager en lui donnant un dao que j'ai renseigne moi-meme
+		// De cette maniere, le resultat de mes tests sera toujours le meme, peu importe ce qu'il y a en base
 		contact1 = new Contact("Dupont", "Jack", "0240367494", "jack.dupont@gmail.com");
 		contact1.setId(0);
 		contact2 = new Contact("Druker", "Michel", "0202020202", "michel.druker@orange.fr");
@@ -54,8 +54,8 @@ class ContactManagerTest {
 	}
 	
 	/*
-	 * TUs de la méthode jolifie
-	 * Doit échouer : la méthode d'affichage affiche un | de trop à la fin
+	 * TUs de la methode jolifie
+	 * Doit echouer : la methode d'affichage affiche un | de trop e la fin
 	 */
 	@Test
 	void testJolifie_nominal() {
@@ -63,7 +63,7 @@ class ContactManagerTest {
 	}
 	
 	/*
-	 * TUs de la méthode checkMail
+	 * TUs de la methode checkMail
 	 */
 	@Test
 	void testCheckMail_nominal() {
@@ -79,7 +79,7 @@ class ContactManagerTest {
 	}
 	
 	/*
-	 * TUs de la méthode checkTelephone avec numéro en 0
+	 * TUs de la methode checkTelephone avec numero en 0
 	 */
 	@Test
 	void testCheckTelephone_nominal_en0() {
@@ -91,13 +91,13 @@ class ContactManagerTest {
 		assertFalse(cm.checkTelephone("00000000000"));
 		assertFalse(cm.checkTelephone("000000000"));
 		
-		// Une chaine de 10 caracteres commençant pas autre chose que 0 doit echouer
+		// Une chaine de 10 caracteres commeneant pas autre chose que 0 doit echouer
 		assertFalse(cm.checkTelephone("1234567890"));
 	}
 	
 	/*
-	 * TUs de la méthode checkTelephone avec numéro en +XX
-	 * Doit échouer : le cas des +XX n'est pas couvert dans l'application
+	 * TUs de la methode checkTelephone avec numero en +XX
+	 * Doit echouer : le cas des +XX n'est pas couvert dans l'application
 	 */
 	@Test
 	void testCheckTelephone_nominal_enxx() {
@@ -109,12 +109,12 @@ class ContactManagerTest {
 		assertFalse(cm.checkTelephone("+330000000000"));
 		assertFalse(cm.checkTelephone("+3300000000"));
 		
-		// Une chaine de 12 caractères commencant par autre chose qu'un + doit echouer
+		// Une chaine de 12 caracteres commencant par autre chose qu'un + doit echouer
 		assertFalse(cm.checkTelephone("012345678901"));
 	}
 	
 	/*
-	 * TIs de la méthode isValid
+	 * TIs de la methode isValid
 	 * 4 cas : 
 	 *   - telephone ok, mail ok --> ok
 	 *   - telephone ko, mail ok --> ko
@@ -132,8 +132,8 @@ class ContactManagerTest {
 	}
 	
 	/*
-	 * TUs de la méthode isValid
-	 * Meme scenarios que pour la version non mockée
+	 * TUs de la methode isValid
+	 * Meme scenarios que pour la version non mockee
 	 */
 	@Test
 	void testIsValid_nominal_mocke() {
@@ -157,21 +157,21 @@ class ContactManagerTest {
 		assertFalse(cm.isValid("", "", "012345678", "mail@gmail"));
 		
 		/*
-		 * Pourquoi ne pas avoir écrit :
+		 * Pourquoi ne pas avoir ecrit :
 		 *   when(cm.checkMail(anyString())).thenReturn(true, true, false, false);
 		 *   when(cm.checkTelephone(anyString())).thenReturn(true, false, true, false);
 		 * ?
-		 * C'est parce que Java ne consulte pas le deuxième membre d'un "&&" si le premier est false
+		 * C'est parce que Java ne consulte pas le deuxieme membre d'un "&&" si le premier est false
 		 * C'est le "lazy interpretation" de Java : si j'ai "false & quelque chose", le resultat sera false dans tous les cas, donc je ne joue meme pas le "quelque chose"
-		 * Du coup, les résultats mockés de checkMail et checkTelephone sont décalés
+		 * Du coup, les resultats mockes de checkMail et checkTelephone sont decales
 		 * 
-		 * Pour éviter ça, avant chaque appel à isValid, je redéfini le résultat attendu pour checkMail et checkTelephone
+		 * Pour eviter ea, avant chaque appel e isValid, je redefini le resultat attendu pour checkMail et checkTelephone
 		 */
 	}
 	
 	/*
 	 * 
-	 * TIs des méthodes appelant le dao
+	 * TIs des methodes appelant le dao
 	 * 
 	 */
 	@Test
